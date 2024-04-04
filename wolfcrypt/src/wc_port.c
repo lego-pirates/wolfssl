@@ -3463,7 +3463,7 @@ char* mystrnstr(const char* s1, const char* s2, unsigned int n)
         if (cb == NULL)
             return BAD_FUNC_ARG;
 
-        thread = _beginthread(cb, 0, arg);
+        thread = _beginthread((_beginthread_proc_type)cb, 0, arg);
         if (thread == -1L) {
             return MEMORY_E;
         }
